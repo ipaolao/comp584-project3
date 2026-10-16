@@ -1,0 +1,140 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Arial, Geneva, sans-serif;
+}
+
+a {
+  color: #2772B0;
+}
+.wrapper {
+  width: 97%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+div img {
+  width: 100%;
+  max-width: 225px;
+}
+
+/* grid system -- mobile first! */
+/* grid contatiner */
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px 4%;           
+  padding: 0 4%;
+  margin-bottom: 16px;
+}
+
+/* Grid items margins*/
+
+[class*="col-"] {
+  grid-column: 1 / -1;}
+
+[class*="col-"] {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  row-gap: 8px;
+}
+
+/* Background colors */
+.col-1 { background-color: #A3CDD9; }
+.col-2 { background-color: #FFFCE6; }
+.col-3 { background-color: #BFD8B8; }
+.col-4 { background-color: #C4B8AE; }
+.col-louvre { background-color: #BFD8B8; }
+.col-6 { background-color: #D6E4EA; }
+
+/* On small screens Zion shows first */
+.row-5 .col-2 { order: -1; }
+
+/* aligned center for louve*/
+.col-louvre {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  text-align: center;
+}
+.col-louvre p {
+  justify-self: start;
+  text-align: left;
+}
+
+/* Row 6 Hover*/
+
+@media (hover: hover) {
+  .row-6 .col-6 {
+    row-gap: 0;                  
+  }
+ 
+  .row-6 .col-6 img {
+    margin-top: 8px;             
+  }
+ 
+  .row-6 .col-6 p {
+    max-height: 0;
+    padding-top: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .4s ease;
+  }
+ 
+  .row-6 .col-6:hover p,
+  .row-6 .col-6:focus-within p {
+    max-height: 200px;
+    padding-top: 8px;
+    opacity: 1;
+  }
+}
+ 
+/* Tablet Landscape Screen Sizes */
+@media only screen and (min-width: 480px) {
+  .row { grid-template-columns: repeat(2, 1fr); }
+
+  .col-1,
+  .col-2 { grid-column: span 1; }
+
+  .row-3 .col-1,
+  .col-3,
+  .col-4,
+  .row-5 .col-2,
+  .col-louvre { grid-column: 1 / -1; }
+
+  .col-6 { grid-column: span 1; }
+}
+
+/* Desktop screen Sizes */
+@media only screen and (min-width: 768px) {
+  .row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .col-1,
+  .row-3 .col-1 { grid-column: span 1; }   
+  .col-2         { grid-column: span 2; }  
+  .col-3         { grid-column: span 3; }   
+  .col-4         { grid-column: 1 / 5; }    
+
+  .row-5 .col-2 {
+    grid-column: span 2;
+    order: 0;
+  }
+
+  /* Row 6: main louvre spans 2, details span 1 */
+  .row-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .col-louvre { grid-column: span 2; }
+  .col-6       { grid-column: span 1; }
+}
