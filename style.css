@@ -26,6 +26,23 @@ div img {
   max-width: 225px;
 }
 
+/* Title board */
+.title-board {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 8px;
+  margin: 0 4% 16px;
+  padding: 32px 16px;
+  background-color: #709865;
+  color: #fff;
+}
+
+.title-board h1,
+.title-board p {
+  margin: 0;
+}
+
 /* grid system -- mobile first! */
 /* grid contatiner */
 
